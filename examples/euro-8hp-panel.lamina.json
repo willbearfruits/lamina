@@ -1,0 +1,249 @@
+{
+ "format": "lamina/1",
+ "name": "euro-8hp-panel",
+ "created": "2026-08-19T07:54:39.828Z",
+ "modified": "2026-08-19T07:54:39.828Z",
+ "units": "mm",
+ "drcPreset": "jlcpcb-2layer",
+ "drc": {
+  "maskMargin": 0.05
+ },
+ "boards": [
+  {
+   "id": "bq4ic1w",
+   "name": "BOARD",
+   "role": "lower",
+   "outline": {
+    "type": "rect",
+    "w": 40.3,
+    "h": 128.5,
+    "r": 1
+   },
+   "thickness": 1.6,
+   "color": "white",
+   "silkColor": "black",
+   "finish": "HASL",
+   "copperOz": 1,
+   "offset": {
+    "x": 0,
+    "y": 0
+   },
+   "items": [
+    {
+     "id": "iq4ic1x",
+     "type": "part",
+     "lib": "mount_m3",
+     "ref": "H1",
+     "value": "",
+     "x": 7.5,
+     "y": 3,
+     "rot": 0,
+     "side": "top",
+     "through": false
+    },
+    {
+     "id": "iq4ic1y",
+     "type": "part",
+     "lib": "mount_m3",
+     "ref": "H2",
+     "value": "",
+     "x": 32.8,
+     "y": 125.5,
+     "rot": 0,
+     "side": "top",
+     "through": false
+    },
+    {
+     "id": "iq4ic1z",
+     "type": "slot",
+     "x": 7.5,
+     "y": 125.5,
+     "len": 5.5,
+     "w": 3.2,
+     "rot": 0
+    },
+    {
+     "id": "iq4ic20",
+     "type": "slot",
+     "x": 32.8,
+     "y": 3,
+     "len": 5.5,
+     "w": 3.2,
+     "rot": 0
+    },
+    {
+     "id": "iq4ic21",
+     "type": "part",
+     "lib": "pot_alpha_9mm",
+     "ref": "RV1",
+     "value": "B100k",
+     "x": 12,
+     "y": 105,
+     "rot": 0,
+     "side": "bottom",
+     "through": false
+    },
+    {
+     "id": "iq4ic22",
+     "type": "part",
+     "lib": "pot_alpha_9mm",
+     "ref": "RV2",
+     "value": "B100k",
+     "x": 28,
+     "y": 105,
+     "rot": 0,
+     "side": "bottom",
+     "through": false
+    },
+    {
+     "id": "iq4ic23",
+     "type": "part",
+     "lib": "pot_alpha_9mm",
+     "ref": "RV3",
+     "value": "B100k",
+     "x": 12,
+     "y": 80,
+     "rot": 0,
+     "side": "bottom",
+     "through": false
+    },
+    {
+     "id": "iq4ic24",
+     "type": "part",
+     "lib": "pot_alpha_9mm",
+     "ref": "RV4",
+     "value": "B100k",
+     "x": 28,
+     "y": 80,
+     "rot": 0,
+     "side": "bottom",
+     "through": false
+    },
+    {
+     "id": "iq4ic25",
+     "type": "part",
+     "lib": "jack_35_pj398sm",
+     "ref": "J1",
+     "value": "",
+     "x": 8,
+     "y": 20,
+     "rot": 0,
+     "side": "bottom",
+     "through": false
+    },
+    {
+     "id": "iq4ic26",
+     "type": "part",
+     "lib": "jack_35_pj398sm",
+     "ref": "J2",
+     "value": "",
+     "x": 20,
+     "y": 20,
+     "rot": 0,
+     "side": "bottom",
+     "through": false
+    },
+    {
+     "id": "iq4ic27",
+     "type": "part",
+     "lib": "jack_35_pj398sm",
+     "ref": "J3",
+     "value": "",
+     "x": 32,
+     "y": 20,
+     "rot": 0,
+     "side": "bottom",
+     "through": false
+    },
+    {
+     "id": "iq4id28",
+     "type": "part",
+     "lib": "jack_35_pj398sm",
+     "ref": "J4",
+     "value": "",
+     "x": 8,
+     "y": 34,
+     "rot": 0,
+     "side": "bottom",
+     "through": false
+    },
+    {
+     "id": "iq4id29",
+     "type": "part",
+     "lib": "jack_35_pj398sm",
+     "ref": "J5",
+     "value": "",
+     "x": 20,
+     "y": 34,
+     "rot": 0,
+     "side": "bottom",
+     "through": false
+    },
+    {
+     "id": "iq4id2a",
+     "type": "part",
+     "lib": "jack_35_pj398sm",
+     "ref": "J6",
+     "value": "",
+     "x": 32,
+     "y": 34,
+     "rot": 0,
+     "side": "bottom",
+     "through": false
+    },
+    {
+     "id": "iq4id2b",
+     "type": "part",
+     "lib": "led_3mm",
+     "ref": "D1",
+     "value": "",
+     "x": 20,
+     "y": 60,
+     "rot": 0,
+     "side": "bottom",
+     "through": false
+    },
+    {
+     "id": "iq4id2c",
+     "type": "text",
+     "layer": "F.Silk",
+     "x": 20.15,
+     "y": 118,
+     "text": "DRONE",
+     "size": 3.5,
+     "thickness": 0.5,
+     "rot": 0,
+     "mirror": false,
+     "align": "center",
+     "font": "sans",
+     "arc": 0
+    },
+    {
+     "id": "iq4id2d",
+     "type": "text",
+     "layer": "F.Silk",
+     "x": 20.15,
+     "y": 46,
+     "text": "IN   CV   OUT",
+     "size": 1.6,
+     "thickness": 0.25,
+     "rot": 0,
+     "mirror": false,
+     "align": "center",
+     "font": "sans",
+     "arc": 0
+    }
+   ]
+  }
+ ],
+ "stack": {
+  "enabled": false,
+  "gap": 11,
+  "gapSource": "connector",
+  "links": []
+ },
+ "meta": {
+  "author": "",
+  "notes": ""
+ }
+}

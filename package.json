@@ -1,0 +1,15 @@
+{
+  "name": "lamina",
+  "version": "0.1.0",
+  "description": "LAMINA — PCB design studio: board shape, colours, holes, graphics, copper art, parts, two-board sandwiches, 3D, exports for JLCPCB/KiCad/DipTrace/FlatCAM/Blender/CNC.",
+  "private": true,
+  "type": "module",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "serve": "./serve.sh",
+    "test": "node test/run-all.mjs"
+  },
+  "author": "willbearfruits",
+  "license": "AGPL-3.0-or-later"
+}

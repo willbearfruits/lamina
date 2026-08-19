@@ -1,0 +1,4 @@
+.tmp/
+.electron/
+node_modules/
+*.log
