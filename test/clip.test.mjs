@@ -282,7 +282,11 @@ const rn = C.rng(42); const rn2 = C.rng(42);
 ok(rn() === rn2() && rn() === rn2(), 'rng(seed) is reproducible');
 ok(C.rng(1)() !== C.rng(2)(), 'different seeds give different streams');
 ok(C.valueNoise(1.5, 2.5, 1) === C.valueNoise(1.5, 2.5, 1) && C.valueNoise(1.5, 2.5, 1) !== C.valueNoise(1.5, 2.5, 2), 'value noise is deterministic and seed-dependent');
+// Normalise line endings first: `.` does not match \r in a JS regex, so on a
+// CRLF checkout `/\/\/.*$/` matches nothing, no comment is stripped, and this
+// assertion trips on clip.js's own line-2 comment saying it uses neither.
 const srcNoComments = (await (await import('node:fs/promises')).readFile(new URL('../js/lib/clip.js', import.meta.url), 'utf8'))
+  .replace(/\r\n?/g, '\n')
   .split('\n').map(l => l.replace(/\/\/.*$/, '')).join('\n');
 ok(!/Math\.random\s*\(|Date\.now\s*\(/.test(srcNoComments), 'clip.js calls neither Math.random nor Date.now');
 

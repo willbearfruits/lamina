@@ -7,6 +7,7 @@ import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { twoBoardDoc, oneBoardDoc, fakeBitmapFor } from './fixtures.mjs';
 import { exportKicad, boardToKicad, KICAD_ORIGIN, KICAD_TEXT_SIZE_FACTOR, kq } from '../js/export/kicad.js';
 import { importKicad, importKicadFootprint, parseSexpr } from '../js/import/kicad.js';
@@ -19,7 +20,7 @@ const ok = (cond, msg) => { assert.ok(cond, msg); n++; };
 const eq = (a, b, msg) => { assert.equal(a, b, msg); n++; };
 const near = (a, b, tol, msg) => { assert.ok(Math.abs(a - b) <= tol, `${msg}: ${a} vs ${b} (tol ${tol})`); n++; };
 
-const REPO = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+const REPO = path.resolve(fileURLToPath(new URL('.', import.meta.url)), '..');
 const OUT = process.env.LAMINA_TEST_OUT || path.join(REPO, '.tmp', 'kicad-test');
 fs.mkdirSync(OUT, { recursive: true });
 const DEMO = '/var/lib/flatpak/app/org.kicad.KiCad/current/active/files/share/kicad/demos/pic_programmer/pic_programmer.kicad_pcb';

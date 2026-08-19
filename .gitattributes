@@ -1,0 +1,10 @@
+# Line endings. The exporters are compared byte-for-byte in tests, footprint
+# and font sources are parsed line-wise, and `.` does not match \r in a JS
+# regex — a CRLF checkout silently changes results. Keep the tree LF.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary
+*.svg text eol=lf
