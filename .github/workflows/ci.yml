@@ -1,0 +1,56 @@
+# Same gate as `node test/run-all.mjs` locally, plus the in-browser self test
+# against a real static server — which is how the app is actually served.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: tests (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      # Windows is in the matrix because the exporters write paths and the
+      # release job runs this same gate there.
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Exporter / importer / library tests
+        run: node test/run-all.mjs
+      - name: Examples resolve, and DRC finds no errors
+        run: node tools/check_examples.mjs
+
+  selftest:
+    name: in-browser self test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      - name: Serve and run ?selftest in headless Chromium
+        run: |
+          node serve.mjs 8790 &
+          for i in $(seq 1 30); do curl -sf http://127.0.0.1:8790/ >/dev/null && break; sleep 1; done
+          # SwiftShader: the 3D preview and its exporters need a GL context.
+          chromium-browser --headless=new --no-sandbox --use-gl=swiftshader \
+            --enable-unsafe-swiftshader --enable-logging=stderr \
+            --virtual-time-budget=90000 'http://127.0.0.1:8790/?selftest' > out.log 2>&1 || true
+          grep -q "ALL PASS" out.log || { echo '--- selftest output ---'; grep -E "SELFTEST|FAIL" -A40 out.log | head -80; exit 1; }
+          grep -o "ALL PASS in [0-9]* ms" out.log | head -1

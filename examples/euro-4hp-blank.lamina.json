@@ -1,0 +1,186 @@
+{
+ "format": "lamina/1",
+ "name": "euro-4hp-blank",
+ "created": "2026-08-19T11:42:25.262Z",
+ "modified": "2026-08-19T11:42:25.262Z",
+ "units": "mm",
+ "drcPreset": "jlcpcb-2layer",
+ "drc": {
+  "maskMargin": 0.05
+ },
+ "boards": [
+  {
+   "id": "bv0tq3o",
+   "name": "BOARD",
+   "role": "lower",
+   "outline": {
+    "type": "rect",
+    "w": 20,
+    "h": 128.5,
+    "r": 1
+   },
+   "thickness": 1.6,
+   "color": "black",
+   "silkColor": "white",
+   "finish": "HASL",
+   "copperOz": 1,
+   "offset": {
+    "x": 0,
+    "y": 0
+   },
+   "items": [
+    {
+     "id": "iv0tq3p",
+     "type": "slot",
+     "x": 7.5,
+     "y": 3,
+     "len": 5.5,
+     "w": 3.2,
+     "rot": 0
+    },
+    {
+     "id": "iv0tq3q",
+     "type": "slot",
+     "x": 12.5,
+     "y": 125.5,
+     "len": 5.5,
+     "w": 3.2,
+     "rot": 0
+    },
+    {
+     "id": "iv0tq3r",
+     "type": "part",
+     "lib": "pot_alpha_9mm",
+     "ref": "RV1",
+     "value": "B100k",
+     "x": 10,
+     "y": 95,
+     "rot": 0,
+     "side": "bottom",
+     "through": false
+    },
+    {
+     "id": "iv0tq3s",
+     "type": "part",
+     "lib": "led_3mm",
+     "ref": "D1",
+     "value": "",
+     "x": 10,
+     "y": 72,
+     "rot": 0,
+     "side": "bottom",
+     "through": false
+    },
+    {
+     "id": "iv0tq3t",
+     "type": "part",
+     "lib": "jack_35_pj398sm",
+     "ref": "J1",
+     "value": "",
+     "x": 10,
+     "y": 40,
+     "rot": 0,
+     "side": "bottom",
+     "through": false
+    },
+    {
+     "id": "iv0tq3u",
+     "type": "part",
+     "lib": "jack_35_pj398sm",
+     "ref": "J2",
+     "value": "",
+     "x": 10,
+     "y": 22,
+     "rot": 0,
+     "side": "bottom",
+     "through": false
+    },
+    {
+     "id": "iv0tq3v",
+     "type": "text",
+     "layer": "F.Silk",
+     "x": 10,
+     "y": 115,
+     "text": "UTIL",
+     "size": 3,
+     "thickness": 0.48,
+     "rot": 0,
+     "mirror": false,
+     "align": "center",
+     "font": "sans-bold",
+     "arc": 0
+    },
+    {
+     "id": "iv0tq3w",
+     "type": "text",
+     "layer": "F.Silk",
+     "x": 10,
+     "y": 85,
+     "text": "AMT",
+     "size": 1.8,
+     "thickness": 0.28800000000000003,
+     "rot": 0,
+     "mirror": false,
+     "align": "center",
+     "font": "sans",
+     "arc": 0
+    },
+    {
+     "id": "iv0tq3x",
+     "type": "text",
+     "layer": "F.Silk",
+     "x": 10,
+     "y": 50,
+     "text": "IN",
+     "size": 1.6,
+     "thickness": 0.256,
+     "rot": 0,
+     "mirror": false,
+     "align": "center",
+     "font": "sans",
+     "arc": 0
+    },
+    {
+     "id": "iv0tq3y",
+     "type": "text",
+     "layer": "F.Silk",
+     "x": 10,
+     "y": 32,
+     "text": "OUT",
+     "size": 1.6,
+     "thickness": 0.256,
+     "rot": 0,
+     "mirror": false,
+     "align": "center",
+     "font": "sans",
+     "arc": 0
+    },
+    {
+     "id": "iv0tq3z",
+     "type": "text",
+     "layer": "F.Silk",
+     "x": 10,
+     "y": 8,
+     "text": "4HP",
+     "size": 1.4,
+     "thickness": 0.22399999999999998,
+     "rot": 0,
+     "mirror": false,
+     "align": "center",
+     "font": "sans",
+     "arc": 0
+    }
+   ]
+  }
+ ],
+ "stack": {
+  "enabled": false,
+  "gap": 11,
+  "gapSource": "connector",
+  "links": []
+ },
+ "meta": {
+  "author": "",
+  "notes": ""
+ }
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "file": "pedal-sandwich",
+    "title": "Pedal sandwich (two boards)",
+    "blurb": "The flagship: a circuit board and a control panel stacked with standoffs and a board-to-board header, knobs poking through the panel. Shows the whole two-board model, panel artwork and copper art.",
+    "boards": "CIRCUIT ?×? mm + CONTROLS ?×? mm",
+    "parts": 14
+  },
+  {
+    "file": "daisy-seed-breakout",
+    "title": "Daisy Seed breakout",
+    "blurb": "A dev board for the Electro-Smith Daisy Seed: module, four knobs, encoder, OLED and audio jacks. The board a daisypatcher patch is meant to land on.",
+    "boards": "BOARD ?×? mm",
+    "parts": 16
+  },
+  {
+    "file": "esp32-s3-audio",
+    "title": "ESP32-S3 audio board",
+    "blurb": "ESP32-S3-Zero with two knobs, in/out jacks and a header for an I2S DAC — the ESP32 has no audio hardware of its own.",
+    "boards": "BOARD ?×? mm",
+    "parts": 11
+  },
+  {
+    "file": "euro-8hp-panel",
+    "title": "Eurorack 8HP panel",
+    "blurb": "A 3U 8HP panel with the mounting slots in the right places, four pots, six jacks and an LED, all rear-mounted.",
+    "boards": "BOARD ?×? mm",
+    "parts": 13
+  },
+  {
+    "file": "euro-4hp-blank",
+    "title": "Eurorack 4HP starter",
+    "blurb": "The smallest useful starting point: a blank 4HP panel with correct mounting slots, two jacks, a pot and an LED. Duplicate it and build on it.",
+    "boards": "BOARD ?×? mm",
+    "parts": 4
+  },
+  {
+    "file": "1590b-faceplate",
+    "title": "1590B faceplate / drill template",
+    "blurb": "No components at all — just the holes a 1590B enclosure needs plus artwork in five stroke fonts and a bare-copper bar. Export PDF at 1:1 to print a drill template, or DXF for a CNC.",
+    "boards": "BOARD ?×? mm",
+    "parts": 0
+  }
+]

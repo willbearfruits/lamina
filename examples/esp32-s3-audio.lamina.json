@@ -1,0 +1,267 @@
+{
+ "format": "lamina/1",
+ "name": "esp32-s3-audio",
+ "created": "2026-08-19T11:42:25.262Z",
+ "modified": "2026-08-19T11:42:25.262Z",
+ "units": "mm",
+ "drcPreset": "jlcpcb-2layer",
+ "drc": {
+  "maskMargin": 0.05
+ },
+ "boards": [
+  {
+   "id": "bv0tq2o",
+   "name": "BOARD",
+   "role": "lower",
+   "outline": {
+    "type": "rect",
+    "w": 76,
+    "h": 52,
+    "r": 2
+   },
+   "thickness": 1.6,
+   "color": "blue",
+   "silkColor": "white",
+   "finish": "HASL",
+   "copperOz": 1,
+   "offset": {
+    "x": 0,
+    "y": 0
+   },
+   "items": [
+    {
+     "id": "pv0tq2p",
+     "type": "part",
+     "lib": "mount_m3",
+     "ref": "H1",
+     "value": "",
+     "x": 3.5,
+     "y": 3.5,
+     "rot": 0,
+     "side": "top",
+     "through": false
+    },
+    {
+     "id": "pv0tq2q",
+     "type": "part",
+     "lib": "mount_m3",
+     "ref": "H2",
+     "value": "",
+     "x": 72.5,
+     "y": 3.5,
+     "rot": 0,
+     "side": "top",
+     "through": false
+    },
+    {
+     "id": "pv0tq2r",
+     "type": "part",
+     "lib": "mount_m3",
+     "ref": "H3",
+     "value": "",
+     "x": 72.5,
+     "y": 48.5,
+     "rot": 0,
+     "side": "top",
+     "through": false
+    },
+    {
+     "id": "pv0tq2s",
+     "type": "part",
+     "lib": "mount_m3",
+     "ref": "H4",
+     "value": "",
+     "x": 3.5,
+     "y": 48.5,
+     "rot": 0,
+     "side": "top",
+     "through": false
+    },
+    {
+     "id": "iv0tq2t",
+     "type": "part",
+     "lib": "mod_esp32_s3_zero",
+     "ref": "U1",
+     "value": "ESP32-S3-Zero",
+     "x": 14,
+     "y": 26,
+     "rot": 0,
+     "side": "top",
+     "through": false
+    },
+    {
+     "id": "iv0tq2u",
+     "type": "part",
+     "lib": "pot_alpha_9mm",
+     "ref": "RV1",
+     "value": "B10k",
+     "x": 38,
+     "y": 37,
+     "rot": 0,
+     "side": "top",
+     "through": false
+    },
+    {
+     "id": "iv0tq2v",
+     "type": "text",
+     "layer": "F.Silk",
+     "x": 38,
+     "y": 28.5,
+     "text": "A",
+     "size": 1.4,
+     "thickness": 0.22399999999999998,
+     "rot": 0,
+     "mirror": false,
+     "align": "center",
+     "font": "sans",
+     "arc": 0
+    },
+    {
+     "id": "iv0tq2w",
+     "type": "part",
+     "lib": "pot_alpha_9mm",
+     "ref": "RV2",
+     "value": "B10k",
+     "x": 55,
+     "y": 37,
+     "rot": 0,
+     "side": "top",
+     "through": false
+    },
+    {
+     "id": "iv0tq2x",
+     "type": "text",
+     "layer": "F.Silk",
+     "x": 55,
+     "y": 28.5,
+     "text": "B",
+     "size": 1.4,
+     "thickness": 0.22399999999999998,
+     "rot": 0,
+     "mirror": false,
+     "align": "center",
+     "font": "sans",
+     "arc": 0
+    },
+    {
+     "id": "iv0tq2y",
+     "type": "part",
+     "lib": "jack_35_pj398sm",
+     "ref": "J1",
+     "value": "",
+     "x": 38,
+     "y": 13,
+     "rot": 0,
+     "side": "top",
+     "through": false
+    },
+    {
+     "id": "iv0tq2z",
+     "type": "text",
+     "layer": "F.Silk",
+     "x": 38,
+     "y": 20.5,
+     "text": "IN",
+     "size": 1.4,
+     "thickness": 0.22399999999999998,
+     "rot": 0,
+     "mirror": false,
+     "align": "center",
+     "font": "sans",
+     "arc": 0
+    },
+    {
+     "id": "iv0tq30",
+     "type": "part",
+     "lib": "jack_35_pj398sm",
+     "ref": "J2",
+     "value": "",
+     "x": 55,
+     "y": 13,
+     "rot": 0,
+     "side": "top",
+     "through": false
+    },
+    {
+     "id": "iv0tq31",
+     "type": "text",
+     "layer": "F.Silk",
+     "x": 55,
+     "y": 20.5,
+     "text": "OUT",
+     "size": 1.4,
+     "thickness": 0.22399999999999998,
+     "rot": 0,
+     "mirror": false,
+     "align": "center",
+     "font": "sans",
+     "arc": 0
+    },
+    {
+     "id": "iv0tq32",
+     "type": "part",
+     "lib": "hdr_1x04",
+     "ref": "J3",
+     "value": "I2S DAC",
+     "x": 69,
+     "y": 26,
+     "rot": 0,
+     "side": "top",
+     "through": false
+    },
+    {
+     "id": "iv0tq33",
+     "type": "text",
+     "layer": "F.Silk",
+     "x": 69,
+     "y": 33,
+     "text": "I2S",
+     "size": 1.3,
+     "thickness": 0.20800000000000002,
+     "rot": 0,
+     "mirror": false,
+     "align": "center",
+     "font": "sans",
+     "arc": 0
+    },
+    {
+     "id": "iv0tq34",
+     "type": "part",
+     "lib": "led_3mm",
+     "ref": "D1",
+     "value": "",
+     "x": 69,
+     "y": 15,
+     "rot": 0,
+     "side": "top",
+     "through": false
+    },
+    {
+     "id": "iv0tq35",
+     "type": "text",
+     "layer": "F.Silk",
+     "x": 34,
+     "y": 47,
+     "text": "ESP32-S3 AUDIO",
+     "size": 2.6,
+     "thickness": 0.4,
+     "rot": 0,
+     "mirror": false,
+     "align": "center",
+     "font": "sans-bold",
+     "arc": 0
+    }
+   ]
+  }
+ ],
+ "stack": {
+  "enabled": false,
+  "gap": 11,
+  "gapSource": "connector",
+  "links": []
+ },
+ "meta": {
+  "author": "",
+  "notes": ""
+ }
+}

@@ -1,8 +1,8 @@
 {
  "format": "lamina/1",
  "name": "pedal-sandwich",
- "created": "2026-08-19T07:54:39.827Z",
- "modified": "2026-08-19T07:54:39.827Z",
+ "created": "2026-08-19T11:42:25.259Z",
+ "modified": "2026-08-19T11:42:25.259Z",
  "units": "mm",
  "drcPreset": "jlcpcb-2layer",
  "drc": {
@@ -10,7 +10,7 @@
  },
  "boards": [
   {
-   "id": "bq4ib1",
+   "id": "bv0tn1",
    "name": "CIRCUIT",
    "role": "lower",
    "outline": {
@@ -30,7 +30,7 @@
    },
    "items": [
     {
-     "id": "iq4ib8",
+     "id": "iv0to8",
      "type": "part",
      "lib": "pot_16mm",
      "ref": "RV1",
@@ -42,7 +42,7 @@
      "through": true
     },
     {
-     "id": "iq4ib9",
+     "id": "iv0to9",
      "type": "part",
      "lib": "pot_16mm",
      "ref": "RV2",
@@ -54,7 +54,7 @@
      "through": true
     },
     {
-     "id": "iq4iba",
+     "id": "iv0toa",
      "type": "part",
      "lib": "pot_16mm",
      "ref": "RV3",
@@ -66,7 +66,7 @@
      "through": true
     },
     {
-     "id": "iq4ibb",
+     "id": "iv0tob",
      "type": "part",
      "lib": "sw_toggle_mts102",
      "ref": "SW1",
@@ -78,7 +78,7 @@
      "through": true
     },
     {
-     "id": "iq4ibc",
+     "id": "iv0toc",
      "type": "part",
      "lib": "led_5mm",
      "ref": "D1",
@@ -90,7 +90,7 @@
      "through": true
     },
     {
-     "id": "iq4ibe",
+     "id": "iv0toe",
      "type": "part",
      "lib": "jack_635_pcb",
      "ref": "J2",
@@ -102,7 +102,7 @@
      "through": false
     },
     {
-     "id": "iq4icf",
+     "id": "iv0tof",
      "type": "part",
      "lib": "jack_635_pcb",
      "ref": "J3",
@@ -114,7 +114,7 @@
      "through": false
     },
     {
-     "id": "iq4icg",
+     "id": "iv0tog",
      "type": "part",
      "lib": "jack_dc_55x21",
      "ref": "J4",
@@ -126,7 +126,7 @@
      "through": false
     },
     {
-     "id": "iq4ich",
+     "id": "iv0toh",
      "type": "part",
      "lib": "dip_8",
      "ref": "U1",
@@ -138,7 +138,7 @@
      "through": false
     },
     {
-     "id": "iq4ici",
+     "id": "iv0toi",
      "type": "part",
      "lib": "r_0805",
      "ref": "R1",
@@ -150,7 +150,7 @@
      "through": false
     },
     {
-     "id": "iq4icj",
+     "id": "iv0toj",
      "type": "part",
      "lib": "r_0805",
      "ref": "R2",
@@ -162,7 +162,7 @@
      "through": false
     },
     {
-     "id": "iq4ick",
+     "id": "iv0tok",
      "type": "part",
      "lib": "c_0805",
      "ref": "C1",
@@ -174,7 +174,7 @@
      "through": false
     },
     {
-     "id": "iq4icl",
+     "id": "iv0tol",
      "type": "part",
      "lib": "cp_r_5x11",
      "ref": "C2",
@@ -186,7 +186,7 @@
      "through": false
     },
     {
-     "id": "iq4icm",
+     "id": "iv0tom",
      "type": "text",
      "layer": "B.Silk",
      "x": 50,
@@ -201,7 +201,7 @@
      "arc": 0
     },
     {
-     "id": "iq4icn",
+     "id": "iv0ton",
      "type": "text",
      "layer": "F.Silk",
      "x": 50,
@@ -218,7 +218,7 @@
    ]
   },
   {
-   "id": "bq4ib2",
+   "id": "bv0tn2",
    "name": "CONTROLS",
    "role": "upper",
    "outline": {
@@ -238,7 +238,7 @@
    },
    "items": [
     {
-     "id": "iq4ibd",
+     "id": "iv0tod",
      "type": "part",
      "lib": "sw_footswitch_3pdt",
      "ref": "SW2",
@@ -250,7 +250,7 @@
      "through": false
     },
     {
-     "id": "iq4ico",
+     "id": "iv0too",
      "type": "text",
      "layer": "F.Silk",
      "x": 50,
@@ -265,7 +265,7 @@
      "arc": 0
     },
     {
-     "id": "iq4icp",
+     "id": "iv0top",
      "type": "text",
      "layer": "F.Silk",
      "x": 22,
@@ -280,7 +280,7 @@
      "arc": 0
     },
     {
-     "id": "iq4icq",
+     "id": "iv0toq",
      "type": "text",
      "layer": "F.Silk",
      "x": 50,
@@ -295,7 +295,7 @@
      "arc": 0
     },
     {
-     "id": "iq4icr",
+     "id": "iv0tor",
      "type": "text",
      "layer": "F.Silk",
      "x": 78,
@@ -310,7 +310,7 @@
      "arc": 0
     },
     {
-     "id": "iq4ics",
+     "id": "iv0tos",
      "type": "text",
      "layer": "F.Silk",
      "x": 36,
@@ -325,7 +325,7 @@
      "arc": 0
     },
     {
-     "id": "iq4ict",
+     "id": "iv0tot",
      "type": "circle",
      "layer": "F.Silk",
      "cx": 22,
@@ -335,7 +335,7 @@
      "filled": false
     },
     {
-     "id": "iq4icu",
+     "id": "iv0tou",
      "type": "circle",
      "layer": "F.Silk",
      "cx": 50,
@@ -345,7 +345,7 @@
      "filled": false
     },
     {
-     "id": "iq4icv",
+     "id": "iv0tov",
      "type": "circle",
      "layer": "F.Silk",
      "cx": 78,
@@ -355,7 +355,7 @@
      "filled": false
     },
     {
-     "id": "iq4icw",
+     "id": "iv0tow",
      "type": "line",
      "layer": "F.Silk",
      "x1": 15.918881681795693,
@@ -365,7 +365,7 @@
      "width": 0.25
     },
     {
-     "id": "iq4icx",
+     "id": "iv0tox",
      "type": "line",
      "layer": "F.Silk",
      "x1": 19.342453848375452,
@@ -375,7 +375,7 @@
      "width": 0.25
     },
     {
-     "id": "iq4icy",
+     "id": "iv0toy",
      "type": "line",
      "layer": "F.Silk",
      "x1": 23.345336399345985,
@@ -385,7 +385,7 @@
      "width": 0.25
     },
     {
-     "id": "iq4icz",
+     "id": "iv0toz",
      "type": "line",
      "layer": "F.Silk",
      "x1": 27.05495316971527,
@@ -395,7 +395,7 @@
      "width": 0.25
     },
     {
-     "id": "iq4ic10",
+     "id": "iv0to10",
      "type": "line",
      "layer": "F.Silk",
      "x1": 29.662656108019963,
@@ -405,7 +405,7 @@
      "width": 0.25
     },
     {
-     "id": "iq4ic11",
+     "id": "iv0to11",
      "type": "line",
      "layer": "F.Silk",
      "x1": 30.6,
@@ -415,7 +415,7 @@
      "width": 0.25
     },
     {
-     "id": "iq4ic12",
+     "id": "iv0to12",
      "type": "line",
      "layer": "F.Silk",
      "x1": 29.662656108019963,
@@ -425,7 +425,7 @@
      "width": 0.25
     },
     {
-     "id": "iq4ic13",
+     "id": "iv0to13",
      "type": "line",
      "layer": "F.Silk",
      "x1": 27.05495316971527,
@@ -435,7 +435,7 @@
      "width": 0.25
     },
     {
-     "id": "iq4ic14",
+     "id": "iv0to14",
      "type": "line",
      "layer": "F.Silk",
      "x1": 23.345336399345985,
@@ -445,7 +445,7 @@
      "width": 0.25
     },
     {
-     "id": "iq4ic15",
+     "id": "iv0to15",
      "type": "line",
      "layer": "F.Silk",
      "x1": 19.342453848375452,
@@ -455,7 +455,7 @@
      "width": 0.25
     },
     {
-     "id": "iq4ic16",
+     "id": "iv0to16",
      "type": "line",
      "layer": "F.Silk",
      "x1": 15.918881681795693,
@@ -465,7 +465,7 @@
      "width": 0.25
     },
     {
-     "id": "iq4ic17",
+     "id": "iv0to17",
      "type": "line",
      "layer": "F.Silk",
      "x1": 43.91888168179569,
@@ -475,7 +475,7 @@
      "width": 0.25
     },
     {
-     "id": "iq4ic18",
+     "id": "iv0to18",
      "type": "line",
      "layer": "F.Silk",
      "x1": 47.342453848375456,
@@ -485,7 +485,7 @@
      "width": 0.25
     },
     {
-     "id": "iq4ic19",
+     "id": "iv0to19",
      "type": "line",
      "layer": "F.Silk",
      "x1": 51.34533639934599,
@@ -495,7 +495,7 @@
      "width": 0.25
     },
     {
-     "id": "iq4ic1a",
+     "id": "iv0to1a",
      "type": "line",
      "layer": "F.Silk",
      "x1": 55.05495316971527,
@@ -505,7 +505,7 @@
      "width": 0.25
     },
     {
-     "id": "iq4ic1b",
+     "id": "iv0to1b",
      "type": "line",
      "layer": "F.Silk",
      "x1": 57.662656108019966,
@@ -515,7 +515,7 @@
      "width": 0.25
     },
     {
-     "id": "iq4ic1c",
+     "id": "iv0to1c",
      "type": "line",
      "layer": "F.Silk",
      "x1": 58.6,
@@ -525,7 +525,7 @@
      "width": 0.25
     },
     {
-     "id": "iq4ic1d",
+     "id": "iv0to1d",
      "type": "line",
      "layer": "F.Silk",
      "x1": 57.662656108019966,
@@ -535,7 +535,7 @@
      "width": 0.25
     },
     {
-     "id": "iq4ic1e",
+     "id": "iv0to1e",
      "type": "line",
      "layer": "F.Silk",
      "x1": 55.05495316971527,
@@ -545,7 +545,7 @@
      "width": 0.25
     },
     {
-     "id": "iq4ic1f",
+     "id": "iv0to1f",
      "type": "line",
      "layer": "F.Silk",
      "x1": 51.34533639934599,
@@ -555,7 +555,7 @@
      "width": 0.25
     },
     {
-     "id": "iq4ic1g",
+     "id": "iv0to1g",
      "type": "line",
      "layer": "F.Silk",
      "x1": 47.342453848375456,
@@ -565,7 +565,7 @@
      "width": 0.25
     },
     {
-     "id": "iq4ic1h",
+     "id": "iv0to1h",
      "type": "line",
      "layer": "F.Silk",
      "x1": 43.91888168179569,
@@ -575,7 +575,7 @@
      "width": 0.25
     },
     {
-     "id": "iq4ic1i",
+     "id": "iv0to1i",
      "type": "line",
      "layer": "F.Silk",
      "x1": 71.9188816817957,
@@ -585,7 +585,7 @@
      "width": 0.25
     },
     {
-     "id": "iq4ic1j",
+     "id": "iv0to1j",
      "type": "line",
      "layer": "F.Silk",
      "x1": 75.34245384837546,
@@ -595,7 +595,7 @@
      "width": 0.25
     },
     {
-     "id": "iq4ic1k",
+     "id": "iv0to1k",
      "type": "line",
      "layer": "F.Silk",
      "x1": 79.34533639934598,
@@ -605,7 +605,7 @@
      "width": 0.25
     },
     {
-     "id": "iq4ic1l",
+     "id": "iv0to1l",
      "type": "line",
      "layer": "F.Silk",
      "x1": 83.05495316971528,
@@ -615,7 +615,7 @@
      "width": 0.25
     },
     {
-     "id": "iq4ic1m",
+     "id": "iv0to1m",
      "type": "line",
      "layer": "F.Silk",
      "x1": 85.66265610801996,
@@ -625,7 +625,7 @@
      "width": 0.25
     },
     {
-     "id": "iq4ic1n",
+     "id": "iv0to1n",
      "type": "line",
      "layer": "F.Silk",
      "x1": 86.6,
@@ -635,7 +635,7 @@
      "width": 0.25
     },
     {
-     "id": "iq4ic1o",
+     "id": "iv0to1o",
      "type": "line",
      "layer": "F.Silk",
      "x1": 85.66265610801996,
@@ -645,7 +645,7 @@
      "width": 0.25
     },
     {
-     "id": "iq4ic1p",
+     "id": "iv0to1p",
      "type": "line",
      "layer": "F.Silk",
      "x1": 83.05495316971528,
@@ -655,7 +655,7 @@
      "width": 0.25
     },
     {
-     "id": "iq4ic1q",
+     "id": "iv0to1q",
      "type": "line",
      "layer": "F.Silk",
      "x1": 79.34533639934598,
@@ -665,7 +665,7 @@
      "width": 0.25
     },
     {
-     "id": "iq4ic1r",
+     "id": "iv0to1r",
      "type": "line",
      "layer": "F.Silk",
      "x1": 75.34245384837546,
@@ -675,7 +675,7 @@
      "width": 0.25
     },
     {
-     "id": "iq4ic1s",
+     "id": "iv0to1s",
      "type": "line",
      "layer": "F.Silk",
      "x1": 71.9188816817957,
@@ -685,7 +685,7 @@
      "width": 0.25
     },
     {
-     "id": "iq4ic1t",
+     "id": "iv0to1t",
      "type": "rect",
      "layer": "F.Cu",
      "x": 50,
@@ -698,7 +698,7 @@
      "filled": true
     },
     {
-     "id": "iq4ic1u",
+     "id": "iv0to1u",
      "type": "rect",
      "layer": "F.Mask",
      "x": 50,
@@ -711,7 +711,7 @@
      "filled": true
     },
     {
-     "id": "iq4ic1v",
+     "id": "iv0to1v",
      "type": "polygon",
      "layer": "F.Silk",
      "points": [
@@ -740,7 +740,7 @@
   "gapSource": "connector",
   "links": [
    {
-    "id": "Lq4ib3",
+    "id": "Lv0tn3",
     "kind": "standoff",
     "lib": "standoff_m3",
     "x": 4,
@@ -749,7 +749,7 @@
     "opts": {}
    },
    {
-    "id": "Lq4ib4",
+    "id": "Lv0tn4",
     "kind": "standoff",
     "lib": "standoff_m3",
     "x": 96,
@@ -758,7 +758,7 @@
     "opts": {}
    },
    {
-    "id": "Lq4ib5",
+    "id": "Lv0tn5",
     "kind": "standoff",
     "lib": "standoff_m3",
     "x": 96,
@@ -767,7 +767,7 @@
     "opts": {}
    },
    {
-    "id": "Lq4ib6",
+    "id": "Lv0tn6",
     "kind": "standoff",
     "lib": "standoff_m3",
     "x": 4,
@@ -776,7 +776,7 @@
     "opts": {}
    },
    {
-    "id": "Lq4ib7",
+    "id": "Lv0tn7",
     "kind": "connector",
     "lib": "b2b_hdr_1x08",
     "ref": "J1",

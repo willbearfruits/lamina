@@ -8,8 +8,98 @@
   "scripts": {
     "start": "electron .",
     "serve": "./serve.sh",
-    "test": "node test/run-all.mjs"
+    "test": "node test/run-all.mjs",
+    "dist": "electron-builder",
+    "dist:linux": "electron-builder --linux",
+    "dist:win": "electron-builder --win",
+    "dist:mac": "electron-builder --mac"
   },
   "author": "willbearfruits",
-  "license": "AGPL-3.0-or-later"
+  "license": "AGPL-3.0-or-later",
+  "build": {
+    "appId": "io.lamina.app",
+    "productName": "LAMINA",
+    "directories": {
+      "buildResources": "build-resources",
+      "output": "dist"
+    },
+    "files": [
+      "index.html",
+      "js/**/*",
+      "css/**/*",
+      "vendor/**/*",
+      "assets/**/*",
+      "examples/**/*",
+      "electron/**/*",
+      "docs/**/*",
+      "README.md",
+      "LICENSE",
+      "package.json",
+      "!**/*.map"
+    ],
+    "linux": {
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ],
+      "category": "Development",
+      "synopsis": "Design-first PCB studio for makers",
+      "description": "Board shape, holes, silkscreen and copper art, parts, two-board sandwiches, 3D preview — exports Gerber/Excellon, KiCad, DipTrace, FlatCAM, G-code, SVG, PDF, STL/OBJ/GLB, BOM/CPL.",
+      "maintainer": "willbearfruits <willbear_fruits@proton.me>"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "perMachine": false,
+      "createDesktopShortcut": "always",
+      "shortcutName": "LAMINA"
+    },
+    "portable": {
+      "artifactName": "LAMINA-${version}-portable.exe"
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "x64",
+            "arm64"
+          ]
+        }
+      ],
+      "category": "public.app-category.developer-tools",
+      "hardenedRuntime": false,
+      "gatekeeperAssess": false
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "willbearfruits",
+      "repo": "lamina"
+    }
+  },
+  "devDependencies": {
+    "electron": "^43.4.1",
+    "electron-builder": "^26.15.3"
+  }
 }

@@ -51,9 +51,47 @@ class App {
     const saved = localStorage.getItem(AUTOSAVE_KEY);
     let restored = false;
     if (saved) { try { const d = JSON.parse(saved); if (d && d.doc && d.doc.boards) { const shortcuts = [{ label: `Restore "${d.doc.name}" (autosave ${new Date(d.at).toLocaleString()})`, run: () => { this.loadDoc(parseDoc(d.doc)); toast('Restored autosave'); } }, { label: 'Open file…', run: () => this.openFile() }]; runWizard(doc => this.loadDoc(doc), { shortcuts }); restored = true; } } catch (e) { /* ignore */ } }
-    if (!restored) runWizard(doc => this.loadDoc(doc), { shortcuts: [{ label: 'Open file…', run: () => this.openFile() }, { label: 'Import KiCad board…', run: () => this.importKicadBoard() }, { label: 'Import DipTrace board (.asc)…', run: () => this.importDiptraceBoard() }, { label: 'Example: pedal sandwich', run: () => this.loadExample('pedal-sandwich') }, { label: 'Example: Eurorack panel', run: () => this.loadExample('euro-8hp-panel') }] });
+    if (!restored) runWizard(doc => this.loadDoc(doc), { shortcuts: [{ label: 'Open file…', run: () => this.openFile() }, { label: 'Import KiCad board…', run: () => this.importKicadBoard() }, { label: 'Import DipTrace board (.asc)…', run: () => this.importDiptraceBoard() }, { label: 'Browse examples…', run: () => this.browseExamples() }] });
   }
-  loadExample(name) { fetch(`examples/${name}.lamina.json`).then(r => { if (!r.ok) throw new Error(r.status); return r.text(); }).then(t => { this.fileName = null; this.loadDoc(parseDoc(t)); toast('Example loaded — File → Save as to keep your own copy'); }).catch(e => toast('Could not load example: ' + e.message, 'err')); }
+  // Examples are listed in examples/index.json (written by tools/make_examples.mjs),
+  // so adding one is a generator edit — no UI change, and the same list feeds
+  // the opening wizard and the Help menu.
+  // Bundled assets: fetch() on the web, an allow-listed IPC read in the
+  // desktop build (Chromium blocks fetch on file:// URLs, so the packaged
+  // app would otherwise have no examples at all).
+  async _appText(rel) {
+    if (this.electron && window.lamina.readAppFile) {
+      const t = await window.lamina.readAppFile(rel);
+      if (t == null) throw new Error('not found: ' + rel);
+      return t;
+    }
+    const r = await fetch(rel);
+    if (!r.ok) throw new Error(String(r.status));
+    return r.text();
+  }
+  async exampleIndex() {
+    if (this._examples) return this._examples;
+    try { this._examples = JSON.parse(await this._appText('examples/index.json')); }
+    catch { this._examples = []; }
+    return this._examples;
+  }
+  async browseExamples() {
+    const list = await this.exampleIndex();
+    if (!list.length) { toast('No examples found next to the app', 'err'); return; }
+    const body = h('div', { class: 'examples' });
+    for (const ex of list) {
+      const card = h('button', { class: 'example-card', onclick: () => { close(); this.loadExample(ex.file); } },
+        h('div', { class: 'example-title' }, ex.title),
+        h('div', { class: 'example-blurb' }, ex.blurb),
+        h('div', { class: 'example-meta hint' }, `${ex.boards} · ${ex.parts} part${ex.parts === 1 ? '' : 's'}`));
+      body.append(card);
+    }
+    let dlg;
+    const close = () => dlg && dlg.close();
+    dlg = modal({ title: 'Open an example', body, width: '640px', buttons: [{ label: 'Cancel' }] });
+    return dlg;
+  }
+  loadExample(name) { this._appText(`examples/${name}.lamina.json`).then(t => { this.fileName = null; this.loadDoc(parseDoc(t)); toast('Example loaded — File → Save as to keep your own copy'); }).catch(e => toast('Could not load example: ' + e.message, 'err')); }
   autosave() { clearTimeout(this._as); this._as = setTimeout(() => { try { localStorage.setItem(AUTOSAVE_KEY, JSON.stringify({ at: Date.now(), doc: this.store.doc })); } catch (e) { /* quota */ } }, 800); }
   loadDoc(doc) { const errs = validateDoc(doc); if (errs.length) toast(errs.slice(0, 3).join('; '), 'err', 5000); this.store.replaceDoc(doc); this.drcFindings = null; this.editor.drcMarkers = []; this.refreshAll(); this.editor.fitToBoard(); this.editor.setTool('select'); }
   // ---------- store binding ----------
@@ -87,14 +125,14 @@ class App {
     document.addEventListener('click', closeAll);
     const menus = document.getElementById('menus');
     menus.append(
-      M('File', [{ label: 'New project…', key: 'Ctrl+N', run: () => this.newProject() }, { label: 'Open…', key: 'Ctrl+O', run: () => this.openFile() }, { label: 'Save', key: 'Ctrl+S', run: () => this.save() }, { label: 'Save as…', key: 'Ctrl+Shift+S', run: () => this.save(true) }, '-', { label: 'Import KiCad board (.kicad_pcb)…', run: () => this.importKicadBoard() }, { label: 'Import KiCad footprint (.kicad_mod)…', run: () => this.importKicadFootprint() }, { label: 'Import DipTrace board (ASCII .asc)…', run: () => this.importDiptraceBoard() }, { label: 'Import SVG graphics…', run: () => this.importSvgGraphics() }, { label: 'Import image (PNG/JPG)…', run: () => this.pickImageForTool() }, '-', { label: 'Export…', key: 'Ctrl+E', run: () => this.exportDialog() }, { label: 'Quick: JLCPCB zip (this board)', run: () => this.quickExport('fab') }, { label: 'Quick: KiCad', run: () => this.quickExport('kicad') }, { label: 'Quick: PNG renders', run: () => this.quickExport('png') }, '-', { label: 'Project settings (name, rules)', run: () => { this.store.clearSelection(); } }]),
+      M('File', [{ label: 'New project…', key: 'Ctrl+N', run: () => this.newProject() }, { label: 'Open…', key: 'Ctrl+O', run: () => this.openFile() }, { label: 'Open example…', run: () => this.browseExamples() }, { label: 'Save', key: 'Ctrl+S', run: () => this.save() }, { label: 'Save as…', key: 'Ctrl+Shift+S', run: () => this.save(true) }, '-', { label: 'Import KiCad board (.kicad_pcb)…', run: () => this.importKicadBoard() }, { label: 'Import KiCad footprint (.kicad_mod)…', run: () => this.importKicadFootprint() }, { label: 'Import DipTrace board (ASCII .asc)…', run: () => this.importDiptraceBoard() }, { label: 'Import SVG graphics…', run: () => this.importSvgGraphics() }, { label: 'Import image (PNG/JPG)…', run: () => this.pickImageForTool() }, '-', { label: 'Export…', key: 'Ctrl+E', run: () => this.exportDialog() }, { label: 'Quick: JLCPCB zip (this board)', run: () => this.quickExport('fab') }, { label: 'Quick: KiCad', run: () => this.quickExport('kicad') }, { label: 'Quick: PNG renders', run: () => this.quickExport('png') }, '-', { label: 'Project settings (name, rules)', run: () => { this.store.clearSelection(); } }]),
       M('Edit', [{ label: 'Undo', key: 'Ctrl+Z', run: () => this.store.undo() }, { label: 'Redo', key: 'Ctrl+Y', run: () => this.store.redo() }, '-', { label: 'Select all', key: 'Ctrl+A', run: () => this.editor.selectAll() }, { label: 'Copy', key: 'Ctrl+C', run: () => this.editor.copySelection() }, { label: 'Cut', key: 'Ctrl+X', run: () => this.editor.cutSelection() }, { label: 'Paste (at cursor)', key: 'Ctrl+V', run: () => this.editor.paste() }, { label: 'Duplicate', key: 'Ctrl+D', run: () => this.editor.duplicateSelection() }, { label: 'Delete', key: 'Del', run: () => this.store.deleteSelected() }, '-', { label: 'Rotate 90° CCW', key: 'R', run: () => this.editor.rotateSelection(90) }, { label: 'Rotate 90° CW', key: 'Shift+R', run: () => this.editor.rotateSelection(-90) }, { label: 'Rotate by…', run: async () => { const v = parseFloat(await promptDlg('Rotate by (degrees, CCW)', '45')); if (Number.isFinite(v)) this.editor.rotateSelection(v); } }, { label: 'Flip side (top↔bottom)', key: 'F', run: () => this.editor.flipSelectionSide() }, { label: 'Move to other board', run: () => this.moveSelectionToOtherBoard() }, { label: 'Align / distribute…', run: () => this.alignDialog() }, { label: 'Repeat / array…', run: () => this.arrayDialog() }, { label: 'Mirror horizontally', run: () => this.editor.mirrorSelection('h') }, { label: 'Mirror vertically', run: () => this.editor.mirrorSelection('v') }, '-', { label: 'Use selected polygon as board outline', run: () => this.useAsOutline() }, '-', { label: 'Replace footprint…', run: () => this.replaceFootprintDialog(this.store.selectedItems().filter(i => i.type === 'part')) }, { label: 'Match imported parts to library…', run: () => this.matchUnknownDialog() }]),
       M('View', [{ label: 'Fit board', key: 'Home', run: () => this.editor.fitToBoard() }, { label: 'Zoom in', key: '+', run: () => this.editor.zoomAt(this.canvas.width / 2, this.canvas.height / 2, 1.25) }, { label: 'Zoom out', key: '−', run: () => this.editor.zoomAt(this.canvas.width / 2, this.canvas.height / 2, 0.8) }, { label: 'Zoom to selection', run: () => this.zoomToSelection() }, '-', { label: 'View from bottom', key: 'V', run: () => { this.editor.setFlip(!this.editor.view.flip); this.refreshBoardTabs(); } }, { label: 'Realistic / Layers mode', key: 'M', run: () => { this.editor.mode = this.editor.mode === 'realistic' ? 'layers' : 'realistic'; this.refreshPanels(); this.editor.requestRender(); } }, { label: 'Toggle grid', key: 'G', run: () => { this.editor.grid.show = !this.editor.grid.show; this.editor.requestRender(); } }, { label: 'Toggle snap', key: 'S', run: () => { this.editor.grid.snap = !this.editor.grid.snap; this.updateStatusBar(); } }, '-', { label: '2D editor', key: '1', run: () => this.showView('2d') }, { label: '3D preview', key: '2', run: () => this.showView('3d') }]),
       M('Design', [{ label: 'Design studio (generators & effects)…', key: 'Ctrl+G', run: () => openDesignStudio(this) },
         '-', ...OPS.filter(o => o.kind === 'gen').slice(0, 8).map(o => ({ label: 'Generate: ' + o.name, run: () => openDesignStudio(this, o.id) })),
         '-', ...OPS.filter(o => o.kind === 'fx').map(o => ({ label: o.name, run: () => openDesignStudio(this, o.id) }))]),
       M('Board', [{ label: 'Board settings (deselect)', run: () => this.store.clearSelection() }, { label: 'Add 4 corner mounting holes…', run: () => this.addMountHolesDialog() }, { label: 'Add second board (sandwich)', run: () => this.addSecondBoard() }, { label: 'Remove upper board', run: () => this.removeSecondBoard() }, { label: 'Swap upper/lower boards', run: () => this.swapBoards() }, '-', { label: 'Stack: add connector…', run: () => this.addConnectorDialog() }, { label: 'Stack: add 4 corner standoffs', run: () => this.store.mutate(d => addStackStandoffs(d, { inset: 4 }), 'standoffs') }, { label: 'Stack: hardware list', run: () => this.showHardware() }, '-', { label: 'Run design rule check', key: 'Ctrl+R', run: () => this.runDRC() }, { label: 'Clear DRC markers', run: () => { this.drcFindings = null; this.editor.drcMarkers = []; this.refreshPanels(); this.editor.requestRender(); } }]),
-      M('Help', [{ label: 'Keyboard shortcuts', key: '?', run: () => this.showShortcuts() }, { label: 'Open example: pedal sandwich', run: () => this.loadExample('pedal-sandwich') }, { label: 'Open example: Eurorack 8HP panel', run: () => this.loadExample('euro-8hp-panel') }, '-', { label: 'How exports map to tools (JLC, KiCad, DipTrace, FlatCAM, Blender)', run: () => this.showExportGuide() }, { label: 'About LAMINA', run: () => modal({ title: 'LAMINA ' + APP_VERSION, body: h('div', {}, h('p', {}, 'PCB design studio — board shape, colours, holes, graphics, copper art, parts, two-board sandwiches, 3D preview, and exports for JLCPCB, KiCad, DipTrace, FlatCAM, Blender, CNC.'), h('p', { class: 'hint' }, 'No build step, no cloud: everything runs locally in this window. Project files are plain JSON (.lamina.json).')), buttons: [{ label: 'Close' }] }) }]),
+      M('Help', [{ label: 'Keyboard shortcuts', key: '?', run: () => this.showShortcuts() }, { label: 'Browse examples…', run: () => this.browseExamples() }, '-', { label: 'How exports map to tools (JLC, KiCad, DipTrace, FlatCAM, Blender)', run: () => this.showExportGuide() }, { label: 'About LAMINA', run: () => modal({ title: 'LAMINA ' + APP_VERSION, body: h('div', {}, h('p', {}, 'PCB design studio — board shape, colours, holes, graphics, copper art, parts, two-board sandwiches, 3D preview, and exports for JLCPCB, KiCad, DipTrace, FlatCAM, Blender, CNC.'), h('p', { class: 'hint' }, 'No build step, no cloud: everything runs locally in this window. Project files are plain JSON (.lamina.json).')), buttons: [{ label: 'Close' }] }) }]),
     );
     document.querySelectorAll('#viewtabs button').forEach(b => b.addEventListener('click', () => this.showView(b.dataset.view)));
     document.getElementById('btn-drc').addEventListener('click', () => this.runDRC());

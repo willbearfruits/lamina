@@ -18,6 +18,18 @@ function createWindow() {
 }
 app.whenReady().then(createWindow);
 app.on('window-all-closed', () => app.quit());
+// Bundled read-only assets (the examples). NOT a general file reader: the
+// renderer opens user files through the dialogs below, which the user drives.
+// Under file:// a plain fetch() is blocked by Chromium, so the packaged app
+// would otherwise ship with the examples silently missing.
+const APP_ROOT = path.join(__dirname, '..');
+ipcMain.handle('read-app-file', async (e, rel) => {
+  if (typeof rel !== 'string') return null;
+  const examples = path.join(APP_ROOT, 'examples');
+  const p = path.resolve(APP_ROOT, rel);
+  if (p !== examples && !p.startsWith(examples + path.sep)) return null;
+  try { return fs.readFileSync(p, 'utf8'); } catch { return null; }
+});
 ipcMain.handle('save-file', async (e, name, bytes) => {
   const r = await dialog.showSaveDialog(win, { defaultPath: name }); if (r.canceled) return null;
   fs.writeFileSync(r.filePath, Buffer.from(bytes)); return r.filePath;

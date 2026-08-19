@@ -181,3 +181,11 @@ table.hw { border-collapse:collapse; width:100%; font-size:12px; } table.hw td, 
 .studio .oplist { max-height:230px; border-right:none; padding-right:0; columns:2; column-gap:10px; }
 .studio .oplist .opitem { break-inside:avoid; }
 .studio .studiomain { max-height:none; }
+
+/* Examples browser (File → Open example…) */
+.examples { display: grid; gap: 8px; }
+.example-card { display: block; width: 100%; text-align: left; padding: 10px 12px; background: var(--panel, #1b1e25); border: 1px solid var(--line, #2b2f38); border-radius: 6px; cursor: pointer; color: inherit; font: inherit; }
+.example-card:hover { border-color: var(--accent, #5aa9e6); background: var(--panel-hi, #222630); }
+.example-title { font-weight: 600; margin-bottom: 2px; }
+.example-blurb { font-size: 12px; opacity: .8; line-height: 1.45; }
+.example-meta { font-size: 11px; margin-top: 4px; }

@@ -1,8 +1,8 @@
 {
  "format": "lamina/1",
  "name": "euro-8hp-panel",
- "created": "2026-08-19T07:54:39.828Z",
- "modified": "2026-08-19T07:54:39.828Z",
+ "created": "2026-08-19T11:42:25.262Z",
+ "modified": "2026-08-19T11:42:25.262Z",
  "units": "mm",
  "drcPreset": "jlcpcb-2layer",
  "drc": {
@@ -10,7 +10,7 @@
  },
  "boards": [
   {
-   "id": "bq4ic1w",
+   "id": "bv0tq36",
    "name": "BOARD",
    "role": "lower",
    "outline": {
@@ -30,7 +30,7 @@
    },
    "items": [
     {
-     "id": "iq4ic1x",
+     "id": "iv0tq37",
      "type": "part",
      "lib": "mount_m3",
      "ref": "H1",
@@ -42,7 +42,7 @@
      "through": false
     },
     {
-     "id": "iq4ic1y",
+     "id": "iv0tq38",
      "type": "part",
      "lib": "mount_m3",
      "ref": "H2",
@@ -54,7 +54,7 @@
      "through": false
     },
     {
-     "id": "iq4ic1z",
+     "id": "iv0tq39",
      "type": "slot",
      "x": 7.5,
      "y": 125.5,
@@ -63,7 +63,7 @@
      "rot": 0
     },
     {
-     "id": "iq4ic20",
+     "id": "iv0tq3a",
      "type": "slot",
      "x": 32.8,
      "y": 3,
@@ -72,7 +72,7 @@
      "rot": 0
     },
     {
-     "id": "iq4ic21",
+     "id": "iv0tq3b",
      "type": "part",
      "lib": "pot_alpha_9mm",
      "ref": "RV1",
@@ -84,7 +84,7 @@
      "through": false
     },
     {
-     "id": "iq4ic22",
+     "id": "iv0tq3c",
      "type": "part",
      "lib": "pot_alpha_9mm",
      "ref": "RV2",
@@ -96,7 +96,7 @@
      "through": false
     },
     {
-     "id": "iq4ic23",
+     "id": "iv0tq3d",
      "type": "part",
      "lib": "pot_alpha_9mm",
      "ref": "RV3",
@@ -108,7 +108,7 @@
      "through": false
     },
     {
-     "id": "iq4ic24",
+     "id": "iv0tq3e",
      "type": "part",
      "lib": "pot_alpha_9mm",
      "ref": "RV4",
@@ -120,79 +120,79 @@
      "through": false
     },
     {
-     "id": "iq4ic25",
+     "id": "iv0tq3f",
      "type": "part",
      "lib": "jack_35_pj398sm",
      "ref": "J1",
      "value": "",
      "x": 8,
-     "y": 20,
+     "y": 18,
      "rot": 0,
      "side": "bottom",
      "through": false
     },
     {
-     "id": "iq4ic26",
+     "id": "iv0tq3g",
      "type": "part",
      "lib": "jack_35_pj398sm",
      "ref": "J2",
      "value": "",
      "x": 20,
-     "y": 20,
+     "y": 18,
      "rot": 0,
      "side": "bottom",
      "through": false
     },
     {
-     "id": "iq4ic27",
+     "id": "iv0tq3h",
      "type": "part",
      "lib": "jack_35_pj398sm",
      "ref": "J3",
      "value": "",
      "x": 32,
-     "y": 20,
+     "y": 18,
      "rot": 0,
      "side": "bottom",
      "through": false
     },
     {
-     "id": "iq4id28",
+     "id": "iv0tq3i",
      "type": "part",
      "lib": "jack_35_pj398sm",
      "ref": "J4",
      "value": "",
      "x": 8,
-     "y": 34,
+     "y": 36,
      "rot": 0,
      "side": "bottom",
      "through": false
     },
     {
-     "id": "iq4id29",
+     "id": "iv0tq3j",
      "type": "part",
      "lib": "jack_35_pj398sm",
      "ref": "J5",
      "value": "",
      "x": 20,
-     "y": 34,
+     "y": 36,
      "rot": 0,
      "side": "bottom",
      "through": false
     },
     {
-     "id": "iq4id2a",
+     "id": "iv0tq3k",
      "type": "part",
      "lib": "jack_35_pj398sm",
      "ref": "J6",
      "value": "",
      "x": 32,
-     "y": 34,
+     "y": 36,
      "rot": 0,
      "side": "bottom",
      "through": false
     },
     {
-     "id": "iq4id2b",
+     "id": "iv0tq3l",
      "type": "part",
      "lib": "led_3mm",
      "ref": "D1",
@@ -204,7 +204,7 @@
      "through": false
     },
     {
-     "id": "iq4id2c",
+     "id": "iv0tq3m",
      "type": "text",
      "layer": "F.Silk",
      "x": 20.15,
@@ -219,11 +219,11 @@
      "arc": 0
     },
     {
-     "id": "iq4id2d",
+     "id": "iv0tq3n",
      "type": "text",
      "layer": "F.Silk",
      "x": 20.15,
-     "y": 46,
+     "y": 48,
      "text": "IN   CV   OUT",
      "size": 1.6,
      "thickness": 0.25,

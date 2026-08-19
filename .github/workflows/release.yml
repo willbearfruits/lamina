@@ -1,0 +1,72 @@
+# Push a tag like v0.1.0 and this builds the standalone desktop app for every
+# platform and attaches it to a DRAFT GitHub Release for that tag.
+#
+#   git tag v0.1.0 && git push origin v0.1.0
+#
+# macOS and Windows builds are UNSIGNED — the OS will warn on first run.
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      os:
+        description: 'Which platform to (re)build — version comes from package.json'
+        type: choice
+        default: all
+        options: [all, linux, windows, mac]
+
+permissions:
+  contents: write
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.pick.outputs.matrix }}
+    steps:
+      - id: pick
+        shell: bash
+        run: |
+          linux='{"os":"ubuntu-latest","key":"linux","name":"Linux (AppImage x64 + arm64)","args":"--linux"}'
+          windows='{"os":"windows-latest","key":"windows","name":"Windows (installer + portable)","args":"--win"}'
+          mac='{"os":"macos-latest","key":"mac","name":"macOS (dmg x64 + arm64, unsigned)","args":"--mac"}'
+          case "${{ github.event_name == 'workflow_dispatch' && inputs.os || 'all' }}" in
+            linux)   m="[$linux]" ;;
+            windows) m="[$windows]" ;;
+            mac)     m="[$mac]" ;;
+            *)       m="[$linux,$windows,$mac]" ;;
+          esac
+          echo "matrix=$m" >> "$GITHUB_OUTPUT"
+
+  build:
+    needs: plan
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        include: ${{ fromJson(needs.plan.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      - name: Gate
+        run: node test/run-all.mjs && node tools/check_examples.mjs
+      - name: Package and publish
+        run: npx electron-builder ${{ matrix.args }} --publish always
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          EP_DRAFT: true
+          CSC_IDENTITY_AUTO_DISCOVERY: false
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lamina-${{ matrix.os }}
+          path: |
+            dist/*.AppImage
+            dist/*.exe
+            dist/*.dmg
+          if-no-files-found: warn
